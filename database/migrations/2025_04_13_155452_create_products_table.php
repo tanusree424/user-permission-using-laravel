@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('google_id')->nullable()->after('email');
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->name();
+            
+            $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.
@@ -26,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('products');
     }
 };

@@ -26,10 +26,17 @@
         <li class="nav-item">
             <a class="nav-link @if (Request::segment(2) == 'users') bg-gradient-dark text-white @else text-dark @endif" 
                href="{{ url('/panel/users') }}">
-                <i class="fa-solid fa-user"></i>
-                <span class="nav-link-text ms-1">User</span>
+               <i class="fa-solid fa-users"></i>
+                <span class="nav-link-text ms-1">Users</span>
             </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link @if (Request::segment(2) == 'permission') bg-gradient-dark text-white @else text-dark @endif" 
+             href="{{ url('/panel/permission') }}">
+             <i class="fa-solid fa-user-shield"></i>
+              <span class="nav-link-text ms-1">Permission</span>
+          </a>
+      </li>
         
        
         <li class="nav-item mt-3">

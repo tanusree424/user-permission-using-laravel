@@ -6,6 +6,7 @@ use App\http\Controllers\AdminDashboardController;
 use App\http\Controllers\UserDashboardController;
 use App\http\Controllers\RoleController;
 use App\http\Controllers\UserController;
+use App\http\Controllers\PermissionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,15 +36,25 @@ Route::group(['middleware'=>'superadmin'], function(){
     Route::get('/panel/roles/add', [RoleController::class, 'addroles'])->name('AddAdminRole');
     Route::post('/panel/roles', [RoleController::class, 'postroles'])->name('PostAdminRole');
     Route::get('/edit/role/{id}',[RoleController::class , "editRole"])->name('edit.role');
+    Route::get('/single/role/{id}', [RoleController::class , 'show'])->name('show.role');
     Route::post('/edit/role/{id}',[RoleController::class , "updateRole"])->name('update.role');
     Route::get('/delete/role/{id}',[RoleController::class, "deleteRole"])->name('delete.role');
     // User Controller
-    Route::get('/panel/users', [UserController::class, 'ListUsers'])->name('ShowAdminRole');
-    Route::get('/panel/users/add', [UserController::class, 'addusers'])->name('AddAdminRole');
-    Route::post('/panel/users', [UserController::class, 'postusers'])->name('PostAdminRole');
-    Route::get('/edit/user/{id}',[UserController::class , "edituser"])->name('edit.role');
-    Route::post('/edit/user/{id}',[UserController::class , "updateuser"])->name('update.role');
-    Route::get('/delete/user/{id}',[UserController::class, "deleteuser"])->name('delete.role');
+    Route::get('/panel/users', [UserController::class, 'ListUsers'])->name('ShowAdminUsers');
+    Route::get('/panel/users/add', [UserController::class, 'addusers'])->name('AddAdminUsers');
+    Route::post('/panel/users', [UserController::class, 'postusers'])->name('PostAdminUsers');
+    Route::get('/edit/user/{id}',[UserController::class , "edituser"])->name('edit.Users');
+    Route::post('/edit/user/{id}',[UserController::class , "updateuser"])->name('update.Users');
+    Route::get('/delete/user/{id}',[UserController::class, "deleteuser"])->name('delete.Users');
+    //Permission
+    Route::get('/panel/permission', [PermissionController::class, 'index'])->name('ShowAdminPermission');
+    Route::get('/panel/permission/add', [PermissionController::class, 'create'])->name('AddAdminPermission');
+    Route::post('/panel/permission', [PermissionController::class, 'store'])->name('PostAdminPermission');
+    Route::get('/edit/permission/{id}',[PermissionController::class , "edit"])->name('edit.permission');
+    Route::post('/edit/permission/{id}',[PermissionController::class , "update"])->name('update.Permission');
+    Route::get('/delete/permission/{id}',[PermissionController::class, "destroy"])->name('delete.Permission');
+
+
 });
 Route::group(['middleware'=>'admin'], function(){
     
